@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_app_base/page/fragment/bottom/f_board.dart';
 import 'package:flutter_app_base/page/fragment/bottom/f_chat.dart';
 import 'package:flutter_app_base/page/fragment/bottom/f_club.dart';
-import 'package:flutter_app_base/page/fragment/bottom/f_home.dart';
+import 'package:flutter_app_base/page/fragment/bottom/home/f_home.dart';
 import 'package:flutter_app_base/page/fragment/bottom/f_profile.dart';
 
 class BottomItem {
