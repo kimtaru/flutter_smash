@@ -1,5 +1,9 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_app_base/controller/sample.dart';
 import 'package:flutter_app_base/page/dialog/matching_dialog/d_matching.dart';
+import 'package:get/get_state_manager/get_state_manager.dart';
+import 'package:get/instance_manager.dart';
 
 class FilterWidget extends StatefulWidget {
   const FilterWidget({super.key});
@@ -9,6 +13,10 @@ class FilterWidget extends StatefulWidget {
 }
 
 class _FilterWidgetState extends State<FilterWidget> {
+  final SampleController sampleState = Get.find();
+
+  String conditionDate = '전체 날짜';
+
   Text get saparatorLine => Text(
         'ㅣ',
         style: TextStyle(
@@ -32,8 +40,13 @@ class _FilterWidgetState extends State<FilterWidget> {
             return const MatchingDialog();
           },
         );
+        DateTime? dateTime =
+            selectedDate?.isNotEmpty == true ? selectedDate![0] : null;
+        DateFormat formatter = DateFormat('M월 d일(E)', 'ko');
+        String dateStr =
+            dateTime == null ? "전체 날짜" : formatter.format(dateTime);
 
-        print(selectedDate);
+        sampleState.setDateStr(dateStr);
       },
       child: Padding(
         padding: const EdgeInsets.only(
@@ -65,10 +78,16 @@ class _FilterWidgetState extends State<FilterWidget> {
                       const SizedBox(
                         width: 5,
                       ),
-                      Text(
-                        '전체 날짜',
-                        style: filterTextStyle,
+                      Obx(
+                        () => Text(
+                          sampleState.dateStr.value,
+                          style: filterTextStyle,
+                        ),
                       ),
+                      // Text(
+                      //   conditionDate,
+                      //   style: filterTextStyle,
+                      // ),
                       saparatorLine,
                       Text(
                         '전체 시간',

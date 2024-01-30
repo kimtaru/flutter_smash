@@ -1,6 +1,8 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_app_base/controller/sample.dart';
 import 'package:flutter_app_base/page/screen/s_main.dart';
+import 'package:get/instance_manager.dart';
 
 class MyApp extends StatefulWidget {
   const MyApp({super.key});
@@ -10,6 +12,12 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
+  @override
+  void initState() {
+    Get.put(SampleController());
+    super.initState();
+  }
+
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
