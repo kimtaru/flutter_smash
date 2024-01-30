@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app_base/page/dialog/matching_dialog/d_matching.dart';
 
 class FilterWidget extends StatefulWidget {
   const FilterWidget({super.key});
@@ -21,8 +22,18 @@ class _FilterWidgetState extends State<FilterWidget> {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {
-        debugPrint('call Dialog');
+      onTap: () async {
+        final selectedDate = await showModalBottomSheet<List<DateTime?>>(
+          isScrollControlled: true,
+          //barrierLabel: 'aa',
+          context: context,
+          //useSafeArea: true,
+          builder: (context) {
+            return const MatchingDialog();
+          },
+        );
+
+        print(selectedDate);
       },
       child: Padding(
         padding: const EdgeInsets.only(
