@@ -13,9 +13,9 @@ class FilterWidget extends StatefulWidget {
 }
 
 class _FilterWidgetState extends State<FilterWidget> {
-  final SampleController sampleState = Get.find();
+  late String? str;
 
-  String conditionDate = '전체 날짜';
+  final SampleController sampleState = Get.find();
 
   Text get saparatorLine => Text(
         'ㅣ',
@@ -84,10 +84,6 @@ class _FilterWidgetState extends State<FilterWidget> {
                           style: filterTextStyle,
                         ),
                       ),
-                      // Text(
-                      //   conditionDate,
-                      //   style: filterTextStyle,
-                      // ),
                       saparatorLine,
                       Text(
                         '전체 시간',
